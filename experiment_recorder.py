@@ -136,6 +136,8 @@ class ExperimentRecorder:
         
         self.generate_cluster_summary(descriptions=descriptions, cluster_predictions=cluster_predictions, name=name)
 
+#ERSP CHANGES START HERE
+    #CLUSTER SUMMARIES
     def generate_cluster_summary(self, descriptions, cluster_predictions, name):
         texts = self.problem.texts
         total_predictions = self.n
@@ -174,7 +176,7 @@ class ExperimentRecorder:
                     file.write(f"- {example}\n")
                 file.write("\n" + "-" * 70 + "\n")  # adding a line of dashes for separation
         
-        # Creating plot
+        # Creating plot (VISUALIZATIONS)
         fig = plt.figure(figsize=(20, 10))
         plt.suptitle('Cluster Distribution')
         plt.pie(cluster_percentage, labels=cluster_description, autopct='%1.1f%%')
@@ -183,7 +185,7 @@ class ExperimentRecorder:
         plt.savefig(fig_path)
         # show plot
         plt.show()
-    
+    #ERSP CHANGES END HERE
     def next_iteration(self):
         self.iteration += 1
         os.makedirs(
